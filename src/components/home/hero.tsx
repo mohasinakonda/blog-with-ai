@@ -57,31 +57,37 @@ export const Hero = () => {
 						transition={{ duration: 0.8, delay: 0.6 }}
 						className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
 					>
-						<a
-							href="#projects"
-							className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-colors duration-300 flex items-center gap-2"
-						>
-							View My Work
-							<svg
-								className="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
+						<div className="relative group">
+							<div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
+							<a
+								href="#projects"
+								className="relative bg-gray-900 text-white font-semibold py-3 px-8 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-colors duration-300"
 							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M17 8l4 4m0 0l-4 4m4-4H3"
-								/>
-							</svg>
-						</a>
-						<a
-							href="#contact"
-							className="border border-blue-500 hover:bg-blue-500/10 text-blue-400 font-semibold py-3 px-8 rounded-full transition-colors duration-300"
-						>
-							Get in Touch
-						</a>
+								View My Work
+								<svg
+									className="w-5 h-5"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M17 8l4 4m0 0l-4 4m4-4H3"
+									/>
+								</svg>
+							</a>
+						</div>
+						<div className="relative group">
+							<div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
+							<a
+								href="#contact"
+								className="border  border-blue-500 hover:bg-blue-500/10 text-blue-400 font-semibold py-3 px-8 rounded-full transition-colors duration-300"
+							>
+								Get in Touch
+							</a>
+						</div>
 					</motion.div>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
