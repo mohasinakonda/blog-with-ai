@@ -38,8 +38,7 @@ export const Hero = () => {
 						transition={{ duration: 0.8, delay: 0.4 }}
 						className="text-xl md:text-2xl text-gray-300 mb-6 max-w-2xl mx-auto"
 					>
-						Crafting Beautiful & Performant Web Experiences with Modern
-						Technologies
+						Crafting Beautiful & Performant Web Experiences
 					</motion.p>
 					<motion.p
 						initial={{ opacity: 0, y: 20 }}

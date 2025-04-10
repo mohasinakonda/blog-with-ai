@@ -7,14 +7,14 @@ const experiences = [
 		company: "Cronix LLC.",
 		period: "2024 - Present",
 		description:
-			"Led the development of enterprise-level React applications, improving performance by 40%",
+			"Led the development of enterprise-level React applications, improving performance by 40%, Mentor and guide junior developers",
 		highlights: [
 			"React",
 			"Next.js",
 			"Headless CMS",
 			"BigCommerce",
 			"TypeScript",
-			"Performance Optimization",
+			"PWA",
 		],
 	},
 	{

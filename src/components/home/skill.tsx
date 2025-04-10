@@ -9,7 +9,7 @@ const skills = [
 			{
 				name: "React/Next.js",
 				icon: "FaReact",
-				experience: "4+ years",
+				experience: "3+ years",
 				level: "Expert",
 				projects: 15,
 				description:
@@ -28,6 +28,7 @@ const skills = [
 				name: "JavaScript",
 				icon: "DiJavascript",
 				level: "Advanced",
+				experience: "3+ years",
 				blogCount: 4,
 				description:
 					"The foundation of everything I build. Proficient in modern ES standards, asynchronous programming, and deep JS internals.",
@@ -36,6 +37,7 @@ const skills = [
 				name: "Redux",
 				icon: "SiRedux",
 				level: "Advanced",
+				experience: "3+ years",
 				blogCount: 4,
 				description:
 					"Managed complex application states like a pro using Redux, Redux Toolkit, and middleware for scalable and predictable apps.",
@@ -43,6 +45,7 @@ const skills = [
 			{
 				name: "Tailwind CSS",
 				icon: "SiTailwindcss",
+				experience: "3+ years",
 				level: "Advanced",
 				blogCount: 2,
 				description:
@@ -50,6 +53,7 @@ const skills = [
 			},
 			{
 				name: "Git/GitHub",
+				experience: "3+ years",
 				icon: "FaGithub",
 				level: "Advanced",
 				blogCount: 3,
@@ -109,6 +113,7 @@ const skills = [
 				name: "GraphQL",
 				icon: "SiGraphql",
 				level: "Intermediate",
+				experience: "2+ years",
 				blogCount: 1,
 				description:
 					"Crafted flexible, efficient APIs with GraphQL, enabling clients to fetch exactly what they need—nothing more, nothing less.",

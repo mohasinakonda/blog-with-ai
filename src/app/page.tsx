@@ -4,6 +4,7 @@ import { FAQ } from "@/components/home/faq";
 import { FeaturedBlog } from "@/components/home/featured-blog";
 import { Hero } from "@/components/home/hero";
 import { Skills } from "@/components/home/skill";
+import { Footer } from "@/components/home/footer";
 
 export default function Home() {
 	return (
@@ -22,6 +23,9 @@ export default function Home() {
 
 			{/* FAQ Section */}
 			<FAQ />
+
+			{/* Footer Section */}
+			<Footer />
 		</main>
 	);
 }
