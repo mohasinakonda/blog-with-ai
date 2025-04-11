@@ -24,3 +24,55 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.prose{
+  /* font-family:  monospace; */
+  opacity: 0.8;
+}
+.prose>h1{
+  font-size: 2.5rem;
+  padding: 12px 0px;
+}
+.prose>h2{
+  font-size: 2rem;
+  padding: 12px 0px;
+}
+.prose>h3{
+  font-size: 1.5rem;
+  padding: 12px 0px;
+}
+
+.prose>p{
+  font-size: 1.1rem;
+  padding: 12px 0px;
+}
+.prose>ol{
+  padding: 20px ;
+}
+.prose>ol>li{
+  list-style-type:decimal;
+  padding: 8px 0px;
+}
+
+pre {
+  margin: 1.5em 0 !important;
+  padding: 1.5em !important;
+  border-radius: 8px !important;
+  background-color: #0c1118  !important;
+  /* box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important; */
+  overflow-x: auto !important;
+}
+
+pre code {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9em !important;
+  line-height: 1.5 !important;
+}
+
+/* Inline code styling */
+:not(pre) > code {
+  padding: 0.2em 0.4em !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+  font-size: 0.9em !important;
+  color: #e2e8f0 !important;
+}
