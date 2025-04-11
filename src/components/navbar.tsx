@@ -1,21 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaHome } from "react-icons/fa";
 
 export function Navbar() {
-	const { theme, setTheme } = useTheme();
-	const [mounted, setMounted] = useState(false);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const [searchQuery, setSearchQuery] = useState("");
-	const [searchResults, setSearchResults] = useState([]);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
+	const [searchResults, setSearchResults] = useState<string[]>([]);
+	const divRef = useRef<HTMLDivElement | null>(null);
+	const buttonRef = useRef<HTMLButtonElement | null>(null);
 	const handleSearch = (query: string) => {
 		setSearchQuery(query);
 		// TODO: Implement actual search logic here
@@ -28,58 +24,39 @@ export function Navbar() {
 		setSearchResults(demoResults);
 	};
 
-	if (!mounted) {
-		return (
-			<nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="flex items-center justify-between h-16">
-						<div className="flex items-center space-x-8">
-							<Link
-								href="/blog"
-								className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
-							>
-								Blogs
-							</Link>
-							<Link
-								href="/about-me"
-								className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
-							>
-								About Me
-							</Link>
-							<Link
-								href="/resume"
-								className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
-							>
-								Resume
-							</Link>
-						</div>
-						<div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800">
-							<span className="sr-only">Loading theme</span>
-							🌙
-						</div>
-					</div>
-				</div>
-			</nav>
-		);
-	}
-
+	// close the search bar when user clicks outside of it
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				buttonRef.current &&
+				!buttonRef.current.contains(event.target as Node)
+			) {
+				setIsSearchOpen(false);
+			}
+		};
+		document.addEventListener("click", handleClickOutside);
+		return () => {
+			document.removeEventListener("click", handleClickOutside);
+		};
+	}, []);
 	return (
 		<nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between h-16">
 					<div className="flex items-center space-x-8">
 						<Link
+							href="/"
+							className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
+						>
+							<FaHome />
+						</Link>
+						<Link
 							href="/blog"
 							className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
 						>
 							Blogs
 						</Link>
-						<Link
-							href="/about-me"
-							className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
-						>
-							About Me
-						</Link>
+
 						<Link
 							href="/resume"
 							className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
@@ -90,9 +67,10 @@ export function Navbar() {
 					<div className="flex items-center space-x-4">
 						<div className="relative">
 							<button
-								onClick={() => setIsSearchOpen(!isSearchOpen)}
+								onClick={() => setIsSearchOpen(true)}
 								className="p-2 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
 								aria-label="Toggle search"
+								ref={buttonRef}
 							>
 								<svg
 									className="w-5 h-5"
@@ -116,6 +94,7 @@ export function Navbar() {
 										exit={{ opacity: 0, scale: 0.95 }}
 										transition={{ duration: 0.2 }}
 										className="absolute right-0 mt-2 w-72 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 z-[9999]"
+										ref={divRef}
 									>
 										<div className="p-2">
 											<input
@@ -131,7 +110,7 @@ export function Navbar() {
 												{searchResults.map((result, index) => (
 													<Link
 														key={index}
-														href={`/blog/${result
+														href={`/blog/${String(result)
 															.toLowerCase()
 															.replace(/ /g, "-")}`}
 														className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -145,13 +124,6 @@ export function Navbar() {
 								)}
 							</AnimatePresence>
 						</div>
-						<button
-							onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-							className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
-							aria-label="Toggle theme"
-						>
-							{theme === "dark" ? "🌞" : "🌙"}
-						</button>
 					</div>
 				</div>
 			</div>
