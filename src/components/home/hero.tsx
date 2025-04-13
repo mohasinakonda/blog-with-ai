@@ -95,7 +95,7 @@ export const Hero = () => {
 						className="flex items-center justify-center gap-6"
 					>
 						<a
-							href="https://github.com"
+							href="https://github.com/mohasinakonda"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -105,7 +105,7 @@ export const Hero = () => {
 							</svg>
 						</a>
 						<a
-							href="https://linkedin.com"
+							href="https://www.linkedin.com/in/hazrat-ali-akonda/"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-gray-400 hover:text-white transition-colors duration-300"
@@ -115,7 +115,7 @@ export const Hero = () => {
 							</svg>
 						</a>
 						<a
-							href="https://twitter.com"
+							href="https://x.com/mohasinakonda"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="text-gray-400 hover:text-white transition-colors duration-300"
