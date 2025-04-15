@@ -15,6 +15,9 @@ export interface Post {
 	content: string;
 	tags: string[];
 	category: string;
+	excerpt: string;
+	keywords: string[];
+	author: string;
 }
 
 export function getAllPosts(): Post[] {
@@ -57,6 +60,9 @@ export function getPostBySlug(slug: string): Post | null {
 			content: processedContent,
 			tags: data.tags || [],
 			category: data.category || "Uncategorized",
+			excerpt: data.excerpt || "",
+			keywords: data.keywords || [],
+			author: data.author || "Unknown",
 		};
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} catch (error: any) {
