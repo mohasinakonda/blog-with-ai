@@ -3,7 +3,28 @@ import Link from "next/link";
 
 import { getAllPosts, getPostBySlug, Post } from "@/lib/api";
 import "highlight.js/styles/atom-one-dark.css";
-import "highlight.js/styles/github-dark.css"; // or your preferred theme
+import "highlight.js/styles/github-dark.css";
+import { Metadata } from "next";
+
+//dynamic meta data
+type Props = {
+	params: Promise<{ slug: string }>;
+};
+
+export const generateMetadata = async ({
+	params,
+}: Props): Promise<Metadata> => {
+	const { slug } = await params;
+	const post = getPostBySlug(slug);
+
+	return {
+		title: `${post?.title}`,
+		description: `${post?.excerpt}`,
+		keywords: post?.keywords,
+		authors: [{ name: "Hazrat akonda" }],
+	};
+};
+
 export async function generateStaticParams() {
 	const posts = getAllPosts();
 	return posts.map((post) => ({

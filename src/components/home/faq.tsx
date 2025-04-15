@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { SectionTittle } from "../shared/title";
 const faqs = [
