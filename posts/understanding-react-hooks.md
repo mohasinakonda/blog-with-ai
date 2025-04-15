@@ -1,6 +1,21 @@
 ---
 title: "Understanding React Hooks: A Comprehensive Guide"
 date: "2024-01-15"
+excerpt: "Master React Hooks with this comprehensive guide covering useState, useEffect, useContext, and custom hooks implementation for building efficient React applications."
+tags: ["React", "Hooks", "JavaScript", "Frontend", "Web Development"]
+category: "React"
+keywords:
+  [
+    "react hooks tutorial",
+    "useState hook",
+    "useEffect hook",
+    "useContext",
+    "custom hooks",
+    "react state management",
+    "functional components",
+    "react best practices",
+  ]
+author: "Hazrat"
 ---
 
 # Understanding React Hooks
@@ -28,7 +43,7 @@ The `useEffect` hook helps manage side effects in your components:
 
 ```javascript
 useEffect(() => {
-  document.title = `Count: ${count}`;
+	document.title = `Count: ${count}`;
 }, [count]);
 ```
 
@@ -52,9 +67,9 @@ Create reusable logic by building custom hooks:
 
 ```javascript
 function useWindowSize() {
-  const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
-  // Implementation
-  return size;
+	const [size, setSize] = useState([window.innerWidth, window.innerHeight]);
+	// Implementation
+	return size;
 }
 ```
 
@@ -67,4 +82,4 @@ function useWindowSize() {
 
 ## Conclusion
 
-React Hooks provide a more elegant way to reuse stateful logic and manage component lifecycle. By understanding these fundamental hooks, you can write more maintainable and efficient React applications."}}}
+React Hooks provide a more elegant way to reuse stateful logic and manage component lifecycle. By understanding these fundamental hooks, you can write more maintainable and efficient React applications."

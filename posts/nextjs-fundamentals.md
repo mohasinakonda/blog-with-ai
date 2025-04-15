@@ -1,6 +1,21 @@
 ---
 title: "Next.js Fundamentals: Building Modern Web Applications"
 date: "2024-01-16"
+excerpt: "A comprehensive guide to Next.js core features including SSR, SSG, file-based routing, API routes, and performance optimization techniques for building modern web applications."
+tags: ["Next.js", "React", "Web Development", "SSR", "JavaScript"]
+category: "Framework"
+keywords:
+  [
+    "nextjs tutorial",
+    "server side rendering",
+    "static site generation",
+    "api routes",
+    "file based routing",
+    "image optimization",
+    "nextjs deployment",
+    "performance optimization",
+  ]
+author: "Hazrat"
 ---
 
 # Next.js Fundamentals
@@ -13,10 +28,10 @@ Next.js provides built-in SSR capabilities:
 
 ```javascript
 export async function getServerSideProps(context) {
-  const data = await fetchData();
-  return {
-    props: { data }
-  };
+	const data = await fetchData();
+	return {
+		props: { data },
+	};
 }
 ```
 
@@ -26,11 +41,11 @@ Pre-render pages at build time:
 
 ```javascript
 export async function getStaticProps() {
-  const posts = await getPosts();
-  return {
-    props: { posts },
-    revalidate: 60 // Optional ISR
-  };
+	const posts = await getPosts();
+	return {
+		props: { posts },
+		revalidate: 60, // Optional ISR
+	};
 }
 ```
 
@@ -54,9 +69,9 @@ Create API endpoints within your Next.js app:
 ```javascript
 // pages/api/users.js
 export default function handler(req, res) {
-  if (req.method === 'GET') {
-    res.status(200).json({ users: [] });
-  }
+	if (req.method === "GET") {
+		res.status(200).json({ users: [] });
+	}
 }
 ```
 
@@ -65,18 +80,12 @@ export default function handler(req, res) {
 Use the built-in Image component for optimal performance:
 
 ```javascript
-import Image from 'next/image';
+import Image from "next/image";
 
 function MyComponent() {
-  return (
-    <Image
-      src="/profile.jpg"
-      alt="Profile"
-      width={500}
-      height={300}
-      priority
-    />
-  );
+	return (
+		<Image src="/profile.jpg" alt="Profile" width={500} height={300} priority />
+	);
 }
 ```
 
@@ -85,14 +94,14 @@ function MyComponent() {
 ### Client-Side Data Fetching
 
 ```javascript
-import useSWR from 'swr';
+import useSWR from "swr";
 
 function Profile() {
-  const { data, error } = useSWR('/api/user', fetcher);
-  
-  if (error) return <div>Error loading</div>;
-  if (!data) return <div>Loading...</div>;
-  return <div>Hello {data.name}!</div>;
+	const { data, error } = useSWR("/api/user", fetcher);
+
+	if (error) return <div>Error loading</div>;
+	if (!data) return <div>Loading...</div>;
+	return <div>Hello {data.name}!</div>;
 }
 ```
 

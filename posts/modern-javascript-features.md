@@ -1,6 +1,21 @@
 ---
 title: "Modern JavaScript Features Every Developer Should Know"
 date: "2024-01-14"
+excerpt: "Explore essential modern JavaScript features including arrow functions, destructuring, spread operators, and async/await that can enhance your code quality and productivity."
+tags: ["JavaScript", "ES6", "Web Development", "Programming", "Frontend"]
+category: "JavaScript"
+keywords:
+  [
+    "modern javascript",
+    "es6 features",
+    "arrow functions",
+    "destructuring",
+    "spread operator",
+    "async await",
+    "optional chaining",
+    "nullish coalescing",
+  ]
+author: "Hazrat"
 ---
 
 # Modern JavaScript Features
@@ -14,7 +29,7 @@ Arrow functions provide a concise syntax for writing function expressions:
 ```javascript
 // Traditional function
 function add(a, b) {
-  return a + b;
+	return a + b;
 }
 
 // Arrow function
@@ -78,13 +93,13 @@ Write asynchronous code that looks synchronous:
 
 ```javascript
 async function fetchData() {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+	try {
+		const response = await fetch(url);
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error(error);
+	}
 }
 ```
 
