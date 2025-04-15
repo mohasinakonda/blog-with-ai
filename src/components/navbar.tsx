@@ -5,23 +5,28 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaHome } from "react-icons/fa";
+import { Post } from "@/lib/api";
 
-export function Navbar() {
+type Props = {
+	posts: Post[];
+};
+export function Navbar({ posts }: Props) {
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const [searchQuery, setSearchQuery] = useState("");
-	const [searchResults, setSearchResults] = useState<string[]>([]);
+	const [searchResults, setSearchResults] = useState<Post[]>([]);
 	const divRef = useRef<HTMLDivElement | null>(null);
 	const buttonRef = useRef<HTMLButtonElement | null>(null);
+
 	const handleSearch = (query: string) => {
 		setSearchQuery(query);
 		// TODO: Implement actual search logic here
 		// This is just a placeholder for demonstration
-		const demoResults = [
-			"Understanding React Hooks",
-			"Next.js Fundamentals",
-			"TypeScript Essentials",
-		].filter((title) => title.toLowerCase().includes(query.toLowerCase()));
-		setSearchResults(demoResults);
+
+		const results = posts.filter((post) =>
+			post.title.toLowerCase().includes(query.toLowerCase()),
+		);
+
+		setSearchResults(results);
 	};
 
 	// close the search bar when user clicks outside of it
@@ -29,11 +34,14 @@ export function Navbar() {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
 				buttonRef.current &&
-				!buttonRef.current.contains(event.target as Node)
+				!buttonRef.current.contains(event.target as Node) &&
+				divRef.current &&
+				!divRef.current.contains(event.target as Node)
 			) {
 				setIsSearchOpen(false);
 			}
 		};
+
 		document.addEventListener("click", handleClickOutside);
 		return () => {
 			document.removeEventListener("click", handleClickOutside);
@@ -109,13 +117,16 @@ export function Navbar() {
 											<div className="border-t border-gray-200 dark:border-gray-700">
 												{searchResults.map((result, index) => (
 													<Link
+														onClick={() => {
+															setSearchQuery("");
+															setIsSearchOpen(false);
+															setSearchResults([]);
+														}}
 														key={index}
-														href={`/blog/${String(result)
-															.toLowerCase()
-															.replace(/ /g, "-")}`}
+														href={`/blog/${String(result.slug)}`}
 														className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
 													>
-														{result}
+														{result.title}
 													</Link>
 												))}
 											</div>

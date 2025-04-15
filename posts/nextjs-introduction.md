@@ -1,8 +1,21 @@
 ---
 title: "Introduction to Next.js"
 date: "2024-03-16"
-tags: ["NextJS", "React", "Web Development"]
+
+excerpt: "A beginner-friendly guide to Next.js, covering its key features including server-side rendering, static site generation, and file-system based routing for building modern web applications."
+tags: ["NextJS", "React", "Web Development", "SSR", "JavaScript"]
 category: "Framework"
+keywords:
+  [
+    "nextjs tutorial",
+    "react framework",
+    "server side rendering",
+    "static site generation",
+    "file system routing",
+    "web development",
+    "nextjs features",
+  ]
+author: "Hazrat"
 ---
 
 # Introduction to Next.js
@@ -37,12 +50,12 @@ Next.js uses a file-system based router. Files in the `app` directory automatica
 ```typescript
 // app/page.tsx - Home page (/)
 export default function Home() {
-  return <h1>Welcome to Next.js!</h1>
+	return <h1>Welcome to Next.js!</h1>;
 }
 
 // app/about/page.tsx - About page (/about)
 export default function About() {
-  return <h1>About Us</h1>
+	return <h1>About Us</h1>;
 }
 ```
 

@@ -1,6 +1,28 @@
 ---
 title: "TypeScript Essentials: A Guide to Static Typing in JavaScript"
 date: "2024-01-13"
+excerpt: "A comprehensive guide to TypeScript's core features including basic types, interfaces, generics, and advanced concepts like mapped types and utility types for building type-safe applications."
+tags:
+  [
+    "TypeScript",
+    "JavaScript",
+    "Programming",
+    "Static Typing",
+    "Web Development",
+  ]
+category: "TypeScript"
+keywords:
+  [
+    "typescript guide",
+    "static typing",
+    "typescript interfaces",
+    "typescript generics",
+    "type assertions",
+    "mapped types",
+    "utility types",
+    "typescript best practices",
+  ]
+author: "Hazrat"
 ---
 
 # TypeScript Essentials
@@ -26,14 +48,14 @@ Interfaces define contracts in your code:
 
 ```typescript
 interface User {
-  id: number;
-  name: string;
-  email: string;
-  age?: number; // Optional property
+	id: number;
+	name: string;
+	email: string;
+	age?: number; // Optional property
 }
 
 function createUser(user: User): User {
-  return user;
+	return user;
 }
 ```
 
@@ -43,8 +65,8 @@ Create custom types with type aliases:
 
 ```typescript
 type Point = {
-  x: number;
-  y: number;
+	x: number;
+	y: number;
 };
 
 type ID = string | number;
@@ -56,7 +78,7 @@ Write reusable, type-safe code with generics:
 
 ```typescript
 function identity<T>(arg: T): T {
-  return arg;
+	return arg;
 }
 
 const num = identity<number>(42);
@@ -69,10 +91,10 @@ Define a set of named constants:
 
 ```typescript
 enum Direction {
-  Up = "UP",
-  Down = "DOWN",
-  Left = "LEFT",
-  Right = "RIGHT"
+	Up = "UP",
+	Down = "DOWN",
+	Left = "LEFT",
+	Right = "RIGHT",
 }
 
 let movement: Direction = Direction.Up;
@@ -101,11 +123,11 @@ let strLength: number = (someValue as string).length;
 
 ```typescript
 type Readonly<T> = {
-  readonly [P in keyof T]: T[P];
+	readonly [P in keyof T]: T[P];
 };
 
 type Optional<T> = {
-  [P in keyof T]?: T[P];
+	[P in keyof T]?: T[P];
 };
 ```
 
@@ -115,7 +137,7 @@ type Optional<T> = {
 // Built-in utility types
 type PartialUser = Partial<User>;
 type ReadonlyUser = Readonly<User>;
-type PickedUser = Pick<User, 'id' | 'name'>;
+type PickedUser = Pick<User, "id" | "name">;
 ```
 
 ## Conclusion

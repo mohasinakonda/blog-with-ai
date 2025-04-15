@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { PageTransition } from "@/components/page-transition";
 import "./globals.css";
+import { getAllPosts } from "@/lib/api";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -25,13 +26,14 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const posts = getAllPosts();
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
 				<ThemeProvider>
-					<Navbar />
+					<Navbar posts={posts} />
 					<PageTransition>{children}</PageTransition>
 				</ThemeProvider>
 			</body>

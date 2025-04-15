@@ -1,6 +1,29 @@
 ---
 title: "Software Architecture Patterns and Design Principles"
 date: "2024-01-18"
+excerpt: "An in-depth exploration of essential software architecture patterns including Clean Architecture, SOLID principles, Microservices, and Event-Driven Architecture with TypeScript examples."
+tags:
+  [
+    "Software Architecture",
+    "Design Patterns",
+    "SOLID",
+    "Microservices",
+    "TypeScript",
+    "Clean Architecture",
+  ]
+category: "Software Design"
+keywords:
+  [
+    "software architecture patterns",
+    "clean architecture",
+    "SOLID principles",
+    "microservices",
+    "event-driven architecture",
+    "repository pattern",
+    "design principles",
+    "typescript architecture",
+  ]
+author: "Hazrat"
 ---
 
 # Software Architecture Patterns
@@ -14,24 +37,24 @@ Clean Architecture promotes separation of concerns and dependency rules:
 ```typescript
 // Domain Layer
 interface User {
-  id: string;
-  name: string;
-  email: string;
+	id: string;
+	name: string;
+	email: string;
 }
 
 // Use Case Layer
 class CreateUserUseCase {
-  constructor(private userRepository: UserRepository) {}
+	constructor(private userRepository: UserRepository) {}
 
-  async execute(userData: User): Promise<User> {
-    return this.userRepository.create(userData);
-  }
+	async execute(userData: User): Promise<User> {
+		return this.userRepository.create(userData);
+	}
 }
 
 // Repository Interface
 interface UserRepository {
-  create(user: User): Promise<User>;
-  findById(id: string): Promise<User | null>;
+	create(user: User): Promise<User>;
+	findById(id: string): Promise<User | null>;
 }
 ```
 
@@ -44,22 +67,34 @@ A class should have only one reason to change:
 ```typescript
 // Bad
 class UserService {
-  saveUser() { /* ... */ }
-  sendEmail() { /* ... */ }
-  generateReport() { /* ... */ }
+	saveUser() {
+		/* ... */
+	}
+	sendEmail() {
+		/* ... */
+	}
+	generateReport() {
+		/* ... */
+	}
 }
 
 // Good
 class UserService {
-  saveUser() { /* ... */ }
+	saveUser() {
+		/* ... */
+	}
 }
 
 class EmailService {
-  sendEmail() { /* ... */ }
+	sendEmail() {
+		/* ... */
+	}
 }
 
 class ReportService {
-  generateReport() { /* ... */ }
+	generateReport() {
+		/* ... */
+	}
 }
 ```
 
@@ -70,18 +105,18 @@ Break down applications into small, independent services:
 ```typescript
 // User Service
 class UserService {
-  async createUser(user: User): Promise<User> {
-    // Handle user creation
-    return user;
-  }
+	async createUser(user: User): Promise<User> {
+		// Handle user creation
+		return user;
+	}
 }
 
 // Order Service
 class OrderService {
-  async createOrder(order: Order): Promise<Order> {
-    // Handle order creation
-    return order;
-  }
+	async createOrder(order: Order): Promise<Order> {
+		// Handle order creation
+		return order;
+	}
 }
 ```
 
@@ -91,18 +126,18 @@ Use events for loose coupling between components:
 
 ```typescript
 interface EventBus {
-  publish(event: Event): void;
-  subscribe(eventType: string, handler: (event: Event) => void): void;
+	publish(event: Event): void;
+	subscribe(eventType: string, handler: (event: Event) => void): void;
 }
 
 class OrderCreatedEvent implements Event {
-  constructor(public readonly orderId: string) {}
+	constructor(public readonly orderId: string) {}
 }
 
 class NotificationHandler {
-  handle(event: OrderCreatedEvent) {
-    // Send notification
-  }
+	handle(event: OrderCreatedEvent) {
+		// Send notification
+	}
 }
 ```
 
@@ -112,15 +147,15 @@ Abstract data access logic:
 
 ```typescript
 interface Repository<T> {
-  findById(id: string): Promise<T | null>;
-  findAll(): Promise<T[]>;
-  create(entity: T): Promise<T>;
-  update(entity: T): Promise<T>;
-  delete(id: string): Promise<void>;
+	findById(id: string): Promise<T | null>;
+	findAll(): Promise<T[]>;
+	create(entity: T): Promise<T>;
+	update(entity: T): Promise<T>;
+	delete(id: string): Promise<void>;
 }
 
 class UserRepository implements Repository<User> {
-  // Implementation
+	// Implementation
 }
 ```
 
