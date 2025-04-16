@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { PageTransition } from "@/components/page-transition";
 import "./globals.css";
 import { getAllPosts } from "@/lib/api";
+import { MouseShadow } from "@/components/shared/mouse-shadow";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
 			>
 				<ThemeProvider>
 					<Navbar posts={posts} />
+					<MouseShadow />
 					<PageTransition>{children}</PageTransition>
 				</ThemeProvider>
 			</body>
