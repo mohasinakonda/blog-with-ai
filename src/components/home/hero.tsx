@@ -6,6 +6,7 @@ export const Hero = () => {
 			<div className="absolute inset-0 opacity-20">
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 			</div>
+			<Pattern />
 			<div className="container mx-auto px-4 z-10">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -164,3 +165,12 @@ export const Hero = () => {
 		</section>
 	);
 };
+
+const Pattern = () => (
+	<div
+		className="pointer-events-none top-36 -right-[1500px] absolute blur-2xl inset-0 z-30 transition-transform duration-300 "
+		style={{
+			background: `radial-gradient(400px circle, rgba(255, 55, 255, 0.15), transparent 80%)`,
+		}}
+	/>
+);
