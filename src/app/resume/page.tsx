@@ -56,7 +56,7 @@ export default function ResumePage() {
 								Hazrat Akonda
 							</h2>
 							<p className="text-xl text-blue-400">Frontend Developer</p>
-							<div className="flex items-center justify-center gap-4 text-gray-300">
+							<div className="flex md:flex-row flex-col items-center justify-center gap-4 text-gray-300">
 								<a
 									href="mailto:hazratmohasin@gmail.com"
 									className="hover:text-blue-400 transition-colors"

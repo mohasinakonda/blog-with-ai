@@ -185,7 +185,7 @@ export default function ClientBlogPage({
 					<nav className="lg:col-span-12 flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide">
 						<button
 							onClick={() => handleCategoryClick("")}
-							className={`relative px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+							className={`relative px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
 								!selectedCategory
 									? "bg-blue-500/20 text-blue-400 before:absolute before:inset-0 before:rounded-full before:border before:border-blue-500/50 before:animate-ping-slow"
 									: "text-gray-400 hover:text-white"
