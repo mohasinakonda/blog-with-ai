@@ -61,7 +61,8 @@ export const Hero = () => {
 						<div className="relative group">
 							<div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
 							<a
-								href="#projects"
+								href="https://convertertia.vercel.app/"
+								target="_blank"
 								className="relative bg-gray-900 text-white font-semibold py-3 px-8 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-colors duration-300"
 							>
 								View My Work
@@ -81,9 +82,9 @@ export const Hero = () => {
 							</a>
 						</div>
 						<div className="relative group">
-							<div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
+							<div className="absolute pointer-events-none -inset-0.5 bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
 							<a
-								href="#contact"
+								href="mailto:mohasinakonda@gmail.com"
 								className="border  border-blue-500 hover:bg-blue-500/10 text-blue-400 font-semibold py-3 px-8 rounded-full transition-colors duration-300"
 							>
 								Get in Touch
