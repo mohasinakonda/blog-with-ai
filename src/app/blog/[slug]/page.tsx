@@ -71,14 +71,14 @@ export default async function BlogPost({
 						<h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
 							{post.title}
 						</h1>
-						<div className="flex items-center gap-4 text-gray-400">
+						<div className="flex md:flex-row flex-col items-center gap-4 text-gray-400">
 							<time className="text-sm">{post.date}</time>
 							{post.tags && (
-								<div className="flex gap-2">
+								<div className="flex gap-2 overflow-auto w-full">
 									{post.tags.map((tag) => (
 										<span
 											key={tag}
-											className="text-xs px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700"
+											className="text-xs whitespace-nowrap px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700"
 										>
 											{tag}
 										</span>
