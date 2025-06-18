@@ -33,6 +33,13 @@ export async function generateStaticParams() {
 	}));
 }
 
+/**
+ * Renders a blog post page with dynamic content and navigation to adjacent posts.
+ *
+ * Displays the post's title, publication date, tags, and HTML content. Provides fixed-position navigation links to the previous and next posts if available. Triggers a 404 page if the post does not exist.
+ *
+ * @param params - A promise resolving to an object containing the post slug.
+ */
 export default async function BlogPost({
 	params,
 }: {
