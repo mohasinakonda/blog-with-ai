@@ -5,6 +5,7 @@ import { getAllPosts, getPostBySlug, Post } from "@/lib/api";
 import "highlight.js/styles/atom-one-dark.css";
 import "highlight.js/styles/github-dark.css";
 import { Metadata } from "next";
+import { SlCalender } from "react-icons/sl";
 
 //dynamic meta data
 type Props = {
@@ -72,7 +73,10 @@ export default async function BlogPost({
 							{post.title}
 						</h1>
 						<div className="flex md:flex-row flex-col items-center gap-4 text-gray-400">
-							<time className="text-sm">{post.date}</time>
+							<time className="text-sm whitespace-nowrap flex gap-1 items-center">
+								<SlCalender />
+								{post.date}
+							</time>
 							{post.tags && (
 								<div className="flex gap-2 overflow-auto w-full">
 									{post.tags.map((tag) => (
@@ -91,6 +95,18 @@ export default async function BlogPost({
 						className="prose prose-lg prose-invert prose-headings:text-gray-100 prose-p:text-gray-300 prose-a:text-blue-400 hover:prose-a:text-blue-300 prose-strong:text-white prose-code:text-blue-300 prose-pre:bg-gray-800/50 prose-pre:border prose-pre:border-gray-700/50 max-w-none"
 						dangerouslySetInnerHTML={{ __html: post.content }}
 					/>
+					<div className="mt-8 flex justify-end">
+						<Link
+							href={`https://www.linkedin.com/sharing/share-offsite/?url=https://hazrat.vercel.app/blog/${post.slug}&title=${post.title}`}
+							target="_blank"
+							className="flex items-center gap-2 px-4 py-2 bg-[#0077B5] hover:bg-[#006399] text-white rounded-lg transition-colors duration-300"
+						>
+							<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+							</svg>
+							Share on LinkedIn
+						</Link>
+					</div>
 				</div>
 			</article>
 		</div>

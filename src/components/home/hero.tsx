@@ -101,6 +101,7 @@ export const Hero = () => {
 							href="https://github.com/mohasinakonda"
 							target="_blank"
 							rel="noopener noreferrer"
+							title="GitHub"
 							className="text-gray-400 hover:text-white transition-colors duration-300"
 						>
 							<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -110,6 +111,7 @@ export const Hero = () => {
 						<a
 							href="https://www.linkedin.com/in/hazrat-ali-akonda/"
 							target="_blank"
+							title="LinkedIn"
 							rel="noopener noreferrer"
 							className="text-gray-400 hover:text-white transition-colors duration-300"
 						>
@@ -121,6 +123,7 @@ export const Hero = () => {
 							href="https://x.com/mohasinakonda"
 							target="_blank"
 							rel="noopener noreferrer"
+							title="Twitter"
 							className="text-gray-400 hover:text-white transition-colors duration-300"
 						>
 							<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
