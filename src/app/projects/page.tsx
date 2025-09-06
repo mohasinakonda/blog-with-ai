@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Renders a static projects section with a gradient background, grid overlay, and styled headings.
+ *
+ * Displays a main heading, a subtitle describing the content, and a secondary heading indicating an advanced table without external libraries.
+ */
 export default function Projects() {
 	return (
 		<div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-16 relative overflow-hidden">

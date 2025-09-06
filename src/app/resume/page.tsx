@@ -2,6 +2,11 @@
 import { motion } from "framer-motion";
 import { FiDownload } from "react-icons/fi";
 
+/**
+ * Renders a professional resume page with animated sections, contact information, experience details, and a button to download the resume as a PDF.
+ *
+ * @returns The React element representing the resume page.
+ */
 export default function ResumePage() {
 	const handleDownload = () => {
 		// Replace with your actual resume PDF URL

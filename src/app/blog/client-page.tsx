@@ -135,6 +135,13 @@ function TagCloud({
 	);
 }
 
+/**
+ * Renders the main client-side blog page with animated category navigation, filtered blog post previews, recent posts, and a tag cloud sidebar.
+ *
+ * Displays posts filtered by selected tag and category, and provides interactive controls for browsing by category or tag. Includes animated UI elements and responsive layout.
+ *
+ * @param initialPosts - The array of blog posts to display and filter.
+ */
 export default function ClientBlogPage({
 	initialPosts,
 }: {
