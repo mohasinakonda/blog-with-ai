@@ -16,7 +16,7 @@ export const MouseShadow = () => {
 		<div
 			className="pointer-events-none fixed inset-0 z-30 transition-transform duration-300 "
 			style={{
-				background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 55, 255, 0.15), transparent 80%)`,
+				background: `radial-gradient(20px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 55, 255, 0.15), transparent 80%)`,
 			}}
 		/>
 	);
