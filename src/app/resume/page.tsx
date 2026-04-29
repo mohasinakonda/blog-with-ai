@@ -5,10 +5,10 @@ import { FiDownload } from "react-icons/fi";
 export default function ResumePage() {
 	const handleDownload = () => {
 		// Replace with your actual resume PDF URL
-		const resumeUrl = "/Hazrat_resume.pdf";
+		const resumeUrl = "/HAZRAT_ALI_AKONDA_FRONTEND_DEVELOPER.pdf";
 		const link = document.createElement("a");
 		link.href = resumeUrl;
-		link.download = "Hazrat_Resume.pdf";
+		link.download = "HAZRAT_ALI_AKONDA_FRONTEND_DEVELOPER.pdf";
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
@@ -53,7 +53,7 @@ export default function ResumePage() {
 						{/* Contact Information */}
 						<div className="text-center space-y-4">
 							<h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-								Hazrat Akonda
+								Hazrat Ali Akonda
 							</h2>
 							<p className="text-xl text-blue-400">Frontend Developer</p>
 							<div className="flex md:flex-row flex-col items-center justify-center gap-4 text-gray-300">
@@ -98,7 +98,7 @@ export default function ResumePage() {
 								Professional Summary
 							</h3>
 							<p className="text-gray-300 leading-relaxed">
-								Passionate Full Stack Developer with 3+ years of experience in
+								Passionate Frontend Developer with 3+ years of experience in
 								building scalable web applications. Specialized in React,
 								Next.js, and TypeScript. Strong focus on clean code, performance
 								optimization, and modern development practices.

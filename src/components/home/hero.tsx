@@ -48,7 +48,7 @@ export const Hero = () => {
 						transition={{ duration: 0.8, delay: 0.5 }}
 						className="text-lg text-gray-400 mb-8 max-w-3xl mx-auto"
 					>
-						Specialized in building exceptional digital experiences. With 5+
+						Specialized in building exceptional digital experiences. With 3+
 						years of experience in frontend development, I focus on creating
 						fast, accessible, and user-friendly web applications.
 					</motion.p>
@@ -82,10 +82,10 @@ export const Hero = () => {
 							</a>
 						</div>
 						<div className="relative group">
-							<div className="absolute pointer-events-none -inset-0.5 bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
+
 							<a
 								href="mailto:mohasinakonda@gmail.com"
-								className="border  border-blue-500 hover:bg-blue-500/10 text-blue-400 font-semibold py-3 px-8 rounded-full transition-colors duration-300"
+								className="border  border-blue-500 text-blue-400 font-semibold py-3 px-8 rounded-full transition-colors duration-300"
 							>
 								Get in Touch
 							</a>
