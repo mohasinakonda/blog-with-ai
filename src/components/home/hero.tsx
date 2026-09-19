@@ -116,7 +116,7 @@ export const Hero = () => {
 
 						{/* Social Links Row */}
 						<motion.div {...fadeUp(0.24)} className="flex items-center gap-5">
-							<a
+							<Link
 								href="https://github.com/mohasinakonda"
 								target="_blank"
 								rel="noopener noreferrer"
@@ -124,8 +124,8 @@ export const Hero = () => {
 								className="text-[#525252] hover:text-[#EDEDED] transition-colors duration-150"
 							>
 								<GithubIcon />
-							</a>
-							<a
+							</Link>
+							<Link
 								href="https://www.linkedin.com/in/hazrat-ali-akonda/"
 								target="_blank"
 								rel="noopener noreferrer"
@@ -133,8 +133,8 @@ export const Hero = () => {
 								className="text-[#525252] hover:text-[#EDEDED] transition-colors duration-150"
 							>
 								<LinkedInIcon />
-							</a>
-							<a
+							</Link>
+							<Link
 								href="https://x.com/mohasinakonda1"
 								target="_blank"
 								rel="noopener noreferrer"
@@ -142,14 +142,14 @@ export const Hero = () => {
 								className="text-[#525252] hover:text-[#EDEDED] transition-colors duration-150"
 							>
 								<XIcon />
-							</a>
-							<a
+							</Link>
+							{/* <Link
 								href="mailto:mohasinakonda@gmail.com"
 								aria-label="Email"
 								className="text-[#525252] hover:text-[#EDEDED] transition-colors duration-150"
 							>
 								<MailIcon />
-							</a>
+							</Link> */}
 						</motion.div>
 					</div>
 				</div>
