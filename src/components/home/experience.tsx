@@ -43,7 +43,7 @@ export const Experience = () => {
 		<section id="experience" className="border-b border-[#222222]">
 
 			<div className="max-w-7xl mx-auto px-6 lg:px-12">
-				<div className="flex items-center justify-between h-16 ">
+				<div className="flex items-center justify-between h-16 border-b border-[#222222]">
 					<span className="font-mono-ui text-[0.65rem] tracking-[0.2em] text-[#555555] uppercase">
 						EXPERIENCE
 					</span>
@@ -51,7 +51,7 @@ export const Experience = () => {
 				</div>
 			</div>
 			<ExperienceTimeline />
-			<div className="max-w-7xl mx-auto px-6 lg:px-12">
+			<div className="max-w-7xl mx-auto px-6 lg:px-12 border-t border-[#222222]">
 
 				<div className="grid grid-cols-1 lg:grid-cols-3">
 
@@ -63,7 +63,7 @@ export const Experience = () => {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
 							transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-							className={`py-12 px-6 lg:px-8 border-b lg:border-b-0 border-[#222222]`}
+							className={`py-8 sm:py-12 px-2 sm:px-6 lg:px-8 border-b lg:border-b-0 lg:border-r last:border-b-0 lg:last:border-r-0 border-[#222222]`}
 						>
 							<div
 								className="font-display text-[#EDEDED] leading-none mb-2"
@@ -83,9 +83,7 @@ export const Experience = () => {
 
 
 				</div>
-				{/* Experience Timeline — v2 design */}
-				<div className="px-6 lg:px-8 pb-4">
-				</div>
+
 			</div>
 
 		</section>

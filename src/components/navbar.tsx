@@ -93,7 +93,7 @@ export function Navbar({ posts }: Props) {
 							<Link
 								key={link.label}
 								href={link.href}
-								className="font-mono-ui text-[0.7rem] tracking-widest text-[#555555] hover:text-[#EDEDED] transition-colors duration-150"
+								className="font-mono-ui btn-underline text-[0.7rem] tracking-widest text-[#555555] hover:text-[#EDEDED] transition-colors duration-150"
 							>
 								{link.label}
 							</Link>
@@ -169,7 +169,7 @@ export function Navbar({ posts }: Props) {
 						{/* CTA */}
 						<Link
 							href="mailto:hazrataliakonda@gmail.com"
-							className="hidden sm:flex items-center gap-2 font-mono-ui text-[0.7rem] tracking-widest text-[#EDEDED] hover:text-[#8E8E8E] transition-colors duration-150 group"
+							className="hidden btn-underline sm:flex items-center gap-2 font-mono-ui text-[0.7rem] tracking-widest text-[#EDEDED] hover:text-[#8E8E8E] transition-colors duration-150 group"
 						>
 							<span className="relative flex h-2 w-2">
 								<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75" />

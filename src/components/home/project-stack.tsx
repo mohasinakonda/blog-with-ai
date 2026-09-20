@@ -34,9 +34,9 @@ const projects: Project[] = [
 		title: "MAP-BASED PROPERTY RENTAL",
 		description:
 			"Location-based property visualization with real-time map filters and a dynamic dashboard. Handles complex geospatial queries and real-time listing updates.",
-		stack: ["React / TypeScript", "Mapbox GL JS", "FastAPI / PostgreSQL", "React Query"],
-		cta: "VIEW CASE STUDY",
-		ctaHref: "/projects",
+		stack: ["React / TypeScript", "Mapbox GL JS", "RestAPI / PostgreSQL", "React Query"],
+		cta: "VIEW LIVE",
+		ctaHref: "https://basa-lagbe-beta.vercel.app/",
 		mockup: <BasaLagbe />,
 	},
 	{
@@ -47,8 +47,8 @@ const projects: Project[] = [
 		description:
 			"A toy store e-commerce platform with a modern design, product filtering, and an admin dashboard for managing products and orders.",
 		stack: ["Next.js / TypeScript", "Redux Toolkit", "Tailwind CSS"],
-		cta: "VIEW CASE STUDY",
-		ctaHref: "/projects",
+		cta: "VIEW LIVE",
+		ctaHref: "https://toyland-dusky.vercel.app/",
 		mockup: <Toyland />,
 	},
 	{
@@ -59,8 +59,8 @@ const projects: Project[] = [
 		description:
 			"Interactive multi-day trip itinerary planner with AI-assisted suggestions, intelligent caching layers, and custom map viewports for location-based travel planning.",
 		stack: ["Next.js / TypeScript", "OpenAI API", "Mapbox GL JS", "MongoDB"],
-		cta: "VIEW CASE STUDY",
-		ctaHref: "/projects",
+		cta: "VIEW LIVE",
+		ctaHref: "https://wanderlust-xi-silk.vercel.app/",
 		mockup: <TripPlanner />,
 	},
 	{
@@ -71,8 +71,8 @@ const projects: Project[] = [
 		description:
 			"A landing page for a healthcare system with modern design, fast loading speed, and SEO optimization.",
 		stack: ["Next.js / TypeScript", "Tailwind CSS"],
-		cta: "VIEW CASE STUDY",
-		ctaHref: "/projects",
+		cta: "VIEW LIVE",
+		ctaHref: "https://healthcare-six-gules.vercel.app/",
 		mockup: <HealthCare />,
 	},
 
@@ -300,6 +300,7 @@ function ProjectCard({
 					{/* CTA */}
 					<Link
 						href={project.ctaHref}
+						target="_blank"
 						className="inline-flex items-center gap-2 font-mono-ui text-[0.7rem] tracking-widest text-[#EDEDED] border border-[#333333] px-4 py-2.5 hover:bg-[#EDEDED] hover:text-[#080808] transition-all duration-150 w-fit group mt-6"
 					>
 						{project.cta}

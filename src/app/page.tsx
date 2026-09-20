@@ -20,6 +20,15 @@ export const metadata: Metadata = {
 		"Next.js",
 		"React",
 		"TypeScript",
+		"React developer",
+		"next js developer",
+		"frontend developer",
+		"senior frontend developer",
+		"senior react developer",
+		"senior next js developer",
+		"experienced frontend developer",
+		"experienced react developer",
+		"experienced next js developer",
 	],
 };
 
