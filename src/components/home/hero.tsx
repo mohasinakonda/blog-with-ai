@@ -1,180 +1,275 @@
 "use client";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+
+const fadeUp = (delay = 0) => ({
+	initial: { opacity: 0, y: 14 },
+	animate: { opacity: 1, y: 0 },
+	transition: { duration: 0.45, delay, ease: [0.16, 1, 0.3, 1] as const },
+});
+
 export const Hero = () => {
 	return (
-		<section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
-			<div className="absolute inset-0 opacity-20">
-				<div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-			</div>
-			<Pattern />
-			<div className="container mx-auto px-4 z-10">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					className="text-center"
-				>
-					<motion.h1
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: 0.2 }}
-						style={{
-							textShadow: "0 13.36px 8.896px, 0 -2px 1px",
-							fontVariant: "small-caps",
-						}}
-						className="text-5xl md:text-7xl font-bold mb-4 relative bg-gradient-to-r skew-3   from-pink-600 via-gray-600 to-white bg-clip-text text-transparent drop-shadow-sm after:content-[''] after:absolute after:left-0 after:bottom-4 after:rounded-sm after:-skew-3 after:w-full after:h-[50%] after:bg-gradient-to-r after:from-pink-600/20 after:via-black/10 after:to-white/20 after:transform after:translate-y-1/2 after:-z-10 w-fit mx-auto"
-					>
-						Hi, I&apos;m Hazrat
-					</motion.h1>
-					<motion.h2
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: 0.3 }}
-						className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text"
-					>
-						Frontend Developer
-					</motion.h2>
-					<motion.p
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: 0.4 }}
-						className="text-xl md:text-2xl text-gray-300 mb-6 max-w-2xl mx-auto"
-					>
-						Crafting Beautiful & Performant Web Experiences
-					</motion.p>
-					<motion.p
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: 0.5 }}
-						className="text-lg text-gray-400 mb-8 max-w-3xl mx-auto"
-					>
-						Specialized in building exceptional digital experiences. With 3+
-						years of experience in frontend development, I focus on creating
-						fast, accessible, and user-friendly web applications.
-					</motion.p>
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: 0.6 }}
-						className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-					>
-						<div className="relative group">
-							<div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
-							<a
-								href="https://convertertia.vercel.app/"
-								target="_blank"
-								className="relative bg-gray-900 text-white font-semibold py-3 px-8 rounded-full flex items-center gap-2 hover:bg-gray-800 transition-colors duration-300"
-							>
-								View My Work
-								<svg
-									className="w-5 h-5"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={2}
-										d="M17 8l4 4m0 0l-4 4m4-4H3"
-									/>
-								</svg>
-							</a>
-						</div>
-						<div className="relative group">
+		<section
+			id="hero"
+			className="border-b border-[#353531] bg-noise relative min-h-[calc(100vh-70px)] flex items-center"
+		>
+			<div className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-14 lg:py-16 relative">
+				{/* Main 2-column technical layout */}
+				<div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
 
-							<a
-								href="mailto:mohasinakonda@gmail.com"
-								className="border  border-blue-500 text-blue-400 font-semibold py-3 px-8 rounded-full transition-colors duration-300"
-							>
-								Get in Touch
-							</a>
-						</div>
-					</motion.div>
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: 0.7 }}
-						className="flex items-center justify-center gap-6"
-					>
-						<a
-							href="https://github.com/mohasinakonda"
-							target="_blank"
-							rel="noopener noreferrer"
-							title="GitHub"
-							className="text-gray-400 hover:text-white transition-colors duration-300"
+					{/* Left Column: Primary Identity (7 Cols) */}
+					<div className="lg:col-span-7 lg:border-r border-[#353531] lg:pr-14 flex flex-col justify-center pb-12 lg:pb-0">
+
+						{/* Monospace Greeting */}
+
+						<motion.p
+							{...fadeUp(0.04)}
+							className="font-mono text-[0.72rem] tracking-[0.24em] text-[#737373] mb-4 uppercase"
 						>
-							<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-							</svg>
-						</a>
-						<a
-							href="https://www.linkedin.com/in/hazrat-ali-akonda/"
-							target="_blank"
-							title="LinkedIn"
-							rel="noopener noreferrer"
-							className="text-gray-400 hover:text-white transition-colors duration-300"
+							Hi, I&apos;m Hazrat Akonda
+						</motion.p>
+
+						{/* Display Headline */}
+						<motion.h1
+							{...fadeUp(0.08)}
+							className="font-display font-black text-[#EDEDED] uppercase tracking-[-0.03em] select-none mb-6 tracking-1"
+							style={{
+								fontSize: "clamp(3.75rem, 10.5vw, 8.5rem)",
+								lineHeight: "0.82",
+							}}
 						>
-							<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-							</svg>
-						</a>
-						<a
-							href="https://x.com/mohasinakonda"
-							target="_blank"
-							rel="noopener noreferrer"
-							title="Twitter"
-							className="text-gray-400 hover:text-white transition-colors duration-300"
-						>
-							<svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-							</svg>
-						</a>
-					</motion.div>
-				</motion.div>
-			</div>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 1, delay: 1 }}
-				className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-			>
-				<span className="text-gray-400 text-sm mb-2">Scroll to explore</span>
-				<motion.div
-					animate={{
-						y: [0, 10, 0],
-					}}
-					transition={{
-						duration: 1.5,
-						repeat: Infinity,
-						repeatType: "reverse",
-						ease: "easeInOut",
-					}}
-				>
-					<svg
-						className="w-6 h-6 text-blue-400"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth={2}
-							d="M19 14l-7 7m0 0l-7-7m7 7V3"
+							FRONTEND
+							<br />
+							ENGINEER
+						</motion.h1>
+
+						{/* 1px Solid Divider Line */}
+						<motion.div
+							initial={{ scaleX: 0, originX: 0 }}
+							animate={{ scaleX: 1 }}
+							transition={{ duration: 0.5, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+							className="border-t border-[#353531] mb-6 w-full"
 						/>
-					</svg>
+
+						{/* Narrative Pitch */}
+						<motion.p
+							{...fadeUp(0.2)}
+							className="text-[#8E8E8E] text-[0.95rem] sm:text-[1rem] leading-relaxed  max-w-lg"
+						>
+
+							I have 3+ years of production experience, work on complex products, think about architecture and reusable systems, and care about performance/accessibility
+						</motion.p>
+
+						{/* CTA Button */}
+
+					</div>
+
+					{/* Right Column: Context & Metadata (5 Cols) */}
+					<div className="lg:col-span-5 lg:pl-14 pt-10 lg:pt-0 flex flex-col gap-10 border-t lg:border-t-0 border-[#353531]">
+
+						{/* Value Statement */}
+						<motion.p
+							{...fadeUp(0.12)}
+							className="text-[#D4D4D4] text-[0.95rem] leading-relaxed font-normal max-w-sm"
+						>
+							I engineer scalable frontend systems that balance clean architecture, reusable design, performance, accessibility, and real-world product needs.
+						</motion.p>
+
+						{/* Structured Attribute Grid */}
+						<motion.div
+							{...fadeUp(0.18)}
+							className="space-y-4"
+						>
+							{[
+								{ key: "EXPERIENCE", value: "3.5+ Years in Frontend Development" },
+								{
+									key: "SPECIALIZATION",
+									value: "React, Next.js, TypeScript, Frontend Architecture",
+								},
+								{
+									key: "FOCUS",
+									value: "Scalable Systems, Performance, Accessibility",
+								},
+							].map(({ key, value }) => (
+								<div key={key} className="border-b border-[#353531] pb-3.5">
+									<p className="font-mono text-[0.68rem] tracking-[0.2em] text-[#525252] mb-1 uppercase">
+										{key}
+									</p>
+									<p className="text-[#EDEDED] text-[0.92rem] font-medium leading-snug">
+										{value}
+									</p>
+								</div>
+							))}
+						</motion.div>
+
+						{/* Social Links Row */}
+						<motion.div {...fadeUp(0.24)} className="flex items-center gap-5">
+							<Link
+								href="https://github.com/mohasinakonda"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="GitHub"
+								className="text-[#525252] hover:text-[#EDEDED] transition-colors duration-150"
+							>
+								<FaGithub size={18} />
+							</Link>
+							<Link
+								href="https://www.linkedin.com/in/hazrat-ali-akonda/"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="LinkedIn"
+								className="text-[#525252] hover:text-[#EDEDED] transition-colors duration-150"
+							>
+								<FaLinkedin size={18} />
+							</Link>
+							<Link
+								href="https://x.com/mohasinakonda1"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="X"
+								className="text-[#525252] hover:text-[#EDEDED] transition-colors duration-150"
+							>
+								<FaXTwitter size={18} />
+							</Link>
+							{/* <Link
+								href="mailto:mohasinakonda@gmail.com"
+								aria-label="Email"
+								className="text-[#525252] hover:text-[#EDEDED] transition-colors duration-150"
+							>
+								<FiMail size={18} />
+							</Link> */}
+						</motion.div>
+					</div>
+				</div>
+
+				{/* Core Competencies / Technical Focus Grid */}
+				<motion.div
+					{...fadeUp(0.3)}
+					className="mt-10 pt-10 lg:pt-14 border-t border-[#353531]"
+				>
+					<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+						{CORE_PILLARS.map((item, index) => (
+							<div
+								key={item.label}
+								className={`group shadow-lg relative flex flex-col items-center justify-center p-6 sm:p-7 md:p-8 rounded-2xl border border-[#222222]  hover:border-[#383838] hover:bg-[#121212] transition-all duration-300 ${index === 4 ? "col-span-2 sm:col-span-1" : ""
+									}`}
+							>
+								<div className="text-[#E5E5E5] group-hover:text-white group-hover:scale-105 transition-all duration-300 mb-5 sm:mb-6">
+									{item.icon}
+								</div>
+								<span className="font-mono text-[0.65rem] sm:text-[0.68rem] md:text-[0.72rem] tracking-[0.2em] text-[#8E8E8E] group-hover:text-[#EDEDED] transition-colors duration-300 text-center uppercase font-medium whitespace-nowrap">
+									{item.label}
+								</span>
+							</div>
+						))}
+					</div>
 				</motion.div>
-			</motion.div>
+
+			</div>
 		</section>
 	);
 };
 
-const Pattern = () => (
-	<div
-		className="pointer-events-none top-36 -right-[1500px] absolute blur-2xl inset-0 z-30 transition-transform duration-300 "
-		style={{
-			background: `radial-gradient(400px circle, rgba(255, 55, 255, 0.15), transparent 80%)`,
-		}}
-	/>
-);
+const CORE_PILLARS = [
+	{
+		label: "ARCHITECTURE",
+		icon: (
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				className="w-8 h-8 md:w-9 md:h-9"
+			>
+				<polygon points="12 2 2 7 12 12 22 7 12 2" />
+				<polyline points="2 12 12 17 22 12" />
+				<polyline points="2 17 12 22 22 17" />
+			</svg>
+		),
+	},
+	{
+		label: "DESIGN SYSTEMS",
+		icon: (
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				className="w-8 h-8 md:w-9 md:h-9"
+			>
+				<rect x="3" y="3" width="7" height="7" rx="1.5" />
+				<rect x="14" y="3" width="7" height="7" rx="1.5" />
+				<rect x="14" y="14" width="7" height="7" rx="1.5" />
+				<rect x="3" y="14" width="7" height="7" rx="1.5" />
+			</svg>
+		),
+	},
+	{
+		label: "API INTEGRATION",
+		icon: (
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				className="w-8 h-8 md:w-9 md:h-9"
+			>
+				<path d="M6 9 2.5 12 6 15" />
+				<path d="M18 9 21.5 12 18 15" />
+				<g transform="rotate(-18 12 12)">
+					<line x1="10.2" y1="5.5" x2="10.2" y2="8" />
+					<line x1="13.8" y1="5.5" x2="13.8" y2="8" />
+					<path d="M8.5 8h7v3a3.5 3.5 0 0 1-7 0v-3z" />
+					<line x1="12" y1="14.5" x2="12" y2="19.5" />
+				</g>
+			</svg>
+		),
+	},
+	{
+		label: "PERFORMANCE",
+		icon: (
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				className="w-8 h-8 md:w-9 md:h-9"
+			>
+				<path d="M4.93 19.07A10 10 0 1 1 19.07 19.07" />
+				<line x1="12" y1="12" x2="16.5" y2="7.5" />
+				<circle cx="12" cy="12" r="1.5" />
+			</svg>
+		),
+	},
+	{
+		label: "ACCESSIBILITY",
+		icon: (
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				className="w-8 h-8 md:w-9 md:h-9"
+			>
+				<circle cx="12" cy="12" r="10" />
+				<circle cx="12" cy="7.2" r="1.3" />
+				<path d="M6 10.5c1.8-.7 3.8-1 6-1s4.2.3 6 1" />
+				<path d="M12 10.5v3.8" />
+				<path d="m9.3 18.5 2.7-4.2 2.7 4.2" />
+			</svg>
+		),
+	},
+];

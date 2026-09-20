@@ -1,82 +1,91 @@
 "use client";
 import { motion } from "framer-motion";
+import { ExperienceTimeline } from "./experience-v2";
 
-import { SectionTittle } from "../shared/title";
-
-const experiences = [
+const metrics = [
 	{
-		role: "Frontend Developer",
-		company: "Cronix LLC.",
-		period: "2024 - Present",
-		description:
-			"Led the development of enterprise-level React applications, improving performance by 40%, Mentor and guide junior developers",
-		highlights: [
-			"React",
-			"Next.js",
-			"Headless CMS",
-			"BigCommerce",
-			"TypeScript",
-			"PWA",
-		],
+		value: "3+",
+		label: "YEARS OF EXPERIENCE",
+		description: "Building production-grade web applications.",
 	},
 	{
-		role: "Frontend Developer",
-		company: "Technopers",
-		period: "2022 - 2024",
-		description:
-			"Developed responsive web applications and implemented modern UI/UX practices",
-		highlights: [
-			"React",
-			"Next.js",
-			"Wordpress theme development",
-			"JavaScript",
-			"UI/UX Design",
-		],
+		value: "10+",
+		label: "PROJECTS DELIVERED",
+		description: "From data dashboards to full-scale web platforms.",
+	},
+	{
+		value: "100%",
+		label: "FOCUS",
+		description: "On maintainable code, Core Web Vitals, and responsive UX.",
 	},
 ];
+
+const timeline = [
+	{
+		period: "2024 — Present",
+		company: "Cronix LLC",
+		role: "Frontend Engineer",
+	},
+	{
+		period: "2022 — 2024",
+		company: "Technopers",
+		role: "Frontend Developer",
+	},
+	{
+		period: "2021 — 2022",
+		company: "Freelance",
+		role: "Frontend Developer",
+	},
+];
+
 export const Experience = () => {
 	return (
-		<section className="relative py-20 bg-gradient-to-br from-gray-800 via-gray-900  to-black text-white">
-			<div className="container mx-auto px-4">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
-					className="text-center mb-12"
-				>
-					{/* <h2 className="text-4xl font-bold mb-4">Professional Experience</h2> */}
-					<SectionTittle>Professional Experience</SectionTittle>
-					<p className="text-xl text-gray-300">My journey in web development</p>
-				</motion.div>
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-					{experiences.map((experience, index) => (
-						<motion.div
-							key={experience.role + index}
-							initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-							whileInView={{ opacity: 1, x: 0 }}
-							transition={{ duration: 0.5, delay: index * 0.2 }}
-							viewport={{ once: true }}
-							className="bg-gray-800/50 bg-opacity-70 backdrop-blur-sm rounded-xl p-8 border border-gray-700 hover:border-blue-500 transition-colors duration-300"
-						>
-							<h3 className="text-2xl font-semibold mb-2">{experience.role}</h3>
-							<div className="text-blue-400 mb-4">{experience.company}</div>
-							<div className="text-gray-400 mb-4">{experience.period}</div>
-							<p className="text-gray-300 mb-6">{experience.description}</p>
-							<div className="flex flex-wrap gap-2">
-								{experience.highlights.map((tech) => (
-									<span
-										key={tech}
-										className="px-3 py-1 bg-gray-600 bg-opacity-20 border border-blue-500 rounded-full text-sm text-white"
-									>
-										{tech}
-									</span>
-								))}
-							</div>
-						</motion.div>
-					))}
+		<section id="experience" className="border-b border-[#222222]">
+
+			<div className="max-w-7xl mx-auto px-6 lg:px-12">
+				<div className="flex items-center justify-between h-16 border-b border-[#222222]">
+					<span className="font-mono-ui text-[0.65rem] tracking-[0.2em] text-[#555555] uppercase">
+						EXPERIENCE
+					</span>
+					<span className="font-mono-ui text-[0.65rem] text-[#333333]">→</span>
 				</div>
 			</div>
+			<ExperienceTimeline />
+			<div className="max-w-7xl mx-auto px-6 lg:px-12 border-t border-[#222222]">
+
+				<div className="grid grid-cols-1 lg:grid-cols-3">
+
+					{/* Left 3 columns — Metrics */}
+					{metrics.map((metric, index) => (
+						<motion.div
+							key={metric.label}
+							initial={{ opacity: 0, y: 12 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+							className={`py-8 sm:py-12 px-2 sm:px-6 lg:px-8 border-b lg:border-b-0 lg:border-r last:border-b-0 lg:last:border-r-0 border-[#222222]`}
+						>
+							<div
+								className="font-display text-[#EDEDED] leading-none mb-2"
+								style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", letterSpacing: "-0.02em" }}
+							>
+								{metric.value}
+							</div>
+							<div className="font-mono-ui text-[0.65rem] tracking-[0.2em] text-[#555555] mb-2 uppercase">
+								{metric.label}
+							</div>
+							<p className="text-[#8E8E8E] text-[0.8125rem] leading-relaxed">
+								{metric.description}
+							</p>
+						</motion.div>
+					))}
+
+
+
+				</div>
+
+			</div>
+
 		</section>
 	);
 };

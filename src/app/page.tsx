@@ -1,46 +1,59 @@
-import { Experience } from "@/components/home/experience";
-import { FAQ } from "@/components/home/faq";
-import { FeaturedBlog } from "@/components/home/featured-blog";
-import { Hero } from "@/components/home/hero";
-import { Skills } from "@/components/home/skill";
-import { Footer } from "@/components/home/footer";
 import { Metadata } from "next";
 import { getAllPosts } from "@/lib/api";
+
+import { Hero } from "@/components/home/hero";
+import { ProjectStack } from "@/components/home/project-stack";
+import { Capabilities } from "@/components/home/capabilities";
+import { Experience } from "@/components/home/experience";
+import { FeaturedBlog } from "@/components/home/featured-blog";
+import { Footer } from "@/components/home/footer";
+
 export const metadata: Metadata = {
-	title: "Hazrat",
+	title: "Hazrat Akonda — Senior Frontend Engineer",
 	description:
-		"Hazrat is a full stack developer who specializes in building scalable and high-performance web applications. He has a passion for creating intuitive and user-friendly interfaces, and he is always looking for new challenges to tackle.",
-	authors: [{ name: "Hazrat" }],
+		"Senior Frontend Engineer specializing in React, Next.js, and TypeScript. Building fast, scalable, and accessible web applications.",
+	authors: [{ name: "Hazrat Akonda" }],
 	keywords: [
-		"Hazrat",
+		"Hazrat Akonda",
 		"mohasinakonda",
+		"Frontend Engineer",
 		"Next.js",
 		"React",
-		"Tailwind CSS",
 		"TypeScript",
+		"React developer",
+		"next js developer",
+		"frontend developer",
+		"senior frontend developer",
+		"senior react developer",
+		"senior next js developer",
+		"experienced frontend developer",
+		"experienced react developer",
+		"experienced next js developer",
 	],
 };
+
 export default function Home() {
 	const posts = getAllPosts();
-	const featuredPost = posts.slice(0, 3);
+	const featuredPost = posts.slice(0, 4);
+
 	return (
-		<main className="min-h-screen">
-			{/* Hero Section */}
+		<main className="min-h-screen bg-[#080808] max-w-5xl mx-auto shadow-[0_0_0_1px_#1f1f1f]">
+			{/* 3.2 — Hero */}
 			<Hero />
 
-			{/* Experience Section */}
+			{/* 3.3 — Scroll-Driven Sticky Stacking Project Showcase */}
+			<ProjectStack />
+
+			{/* 3.4 — Engineering Capabilities */}
+			<Capabilities />
+
+			{/* 3.5 — Metrics & Experience Timeline */}
 			<Experience />
 
-			{/* Skills Section */}
-			<Skills />
-
-			{/* Featured Blog Posts Section */}
+			{/* 3.6 — Engineering Notes & Writing */}
 			<FeaturedBlog featuredPost={featuredPost} />
 
-			{/* FAQ Section */}
-			<FAQ />
-
-			{/* Footer Section */}
+			{/* 3.7 — Contact Footer */}
 			<Footer />
 		</main>
 	);

@@ -1,78 +1,199 @@
 @import "tailwindcss";
 
+/* ─── PRD-v2 Design Tokens ──────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surfaces */
+  --bg-main: #080808;
+  --bg-surface: #101010;
+  --bg-elevated: #171717;
+  --bg-mockup-light: #F5F5F5;
+  --border-color: #8E8E8E60;
+
+  /* Borders & Grid Rules */
+  --border-subtle: #222222;
+  --border-strong: #333333;
+  --border-mockup: #E5E5E5;
+
+  /* Typography Colors */
+  --text-white: #EDEDED;
+  --text-muted: #8E8E8E;
+  --text-dim: #555555;
+  --text-dark: #0D0D0D;
+
+  /* Functional Accents */
+  --accent-online: #22C55E;
+
+  /* Typography Scale */
+  --text-hero: clamp(4.5rem, 12vw, 10rem);
+  --text-section-title: clamp(2rem, 5vw, 3.5rem);
+  --text-card-title: 1.5rem;
+  --text-body: 0.9375rem;
+  --text-meta: 0.8125rem;
+  --text-mono-tag: 0.75rem;
+
+  /* Easing */
+  --ease-mechanical: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-main);
+  --color-foreground: var(--text-white);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-bebas-neue);
+  --border-color: var(--border-color);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base Reset ─────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-white);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.prose{
-  /* font-family:  monospace; */
+
+/* ─── PRD-v2 Utility Classes ─────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-bebas-neue), 'Bebas Neue', 'Anton', 'Oswald', sans-serif;
+}
+
+.font-mono-ui {
+  font-family: var(--font-geist-mono), 'JetBrains Mono', monospace;
+}
+
+/* Film Grain Noise Background */
+.bg-noise {
+  background-color: #171717;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+/* Technical Micro-Dot Grid */
+.bg-dot-pattern {
+  background-color: #080808;
+  background-image: radial-gradient(#262626 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Subtle 1px Grid Lines */
+.bg-grid-pattern {
+  background-color: #080808;
+  background-image:
+    linear-gradient(to right, #171717 1px, transparent 1px),
+    linear-gradient(to bottom, #171717 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ─── Hover Arrow Micro-animation ────────────────────────────────────── */
+.arrow-link {
+  transition: color 150ms var(--ease-mechanical);
+}
+
+.arrow-link:hover .arrow-icon {
+  transform: translate(2px, -2px);
+  transition: transform 150ms var(--ease-mechanical);
+}
+
+.arrow-icon {
+  display: inline-block;
+  transition: transform 150ms var(--ease-mechanical);
+}
+
+/* ─── Blog Prose Styles (preserved from original) ───────────────────── */
+.prose {
   opacity: 0.8;
 }
-.prose>h1{
+
+.prose>h1 {
   font-size: 2.5rem;
   padding: 12px 0px;
 }
-.prose>h2{
+
+.prose>h2 {
   font-size: 2rem;
   padding: 12px 0px;
 }
-.prose>h3{
+
+.prose>h3 {
   font-size: 1.5rem;
   padding: 12px 0px;
 }
 
-.prose>p{
+.prose>p {
   font-size: 1.1rem;
   padding: 12px 0px;
 }
-.prose>ol{
-  padding: 20px ;
+
+.prose>ol {
+  padding: 20px;
 }
-.prose>ol>li{
-  list-style-type:decimal;
+
+.prose>ol>li {
+  list-style-type: decimal;
   padding: 8px 0px;
 }
 
 pre {
   margin: 1.5em 0 !important;
   padding: 1.5em !important;
-  border-radius: 8px !important;
-  background-color: #0c1118  !important;
-  /* box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important; */
+  border-radius: 0 !important;
+  background-color: #0c1118 !important;
+  border: 1px solid var(--border-subtle) !important;
   overflow-x: auto !important;
 }
 
 pre code {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: var(--font-geist-mono), 'JetBrains Mono', monospace !important;
   font-size: 0.9em !important;
   line-height: 1.5 !important;
 }
 
-/* Inline code styling */
-:not(pre) > code {
+:not(pre)>code {
   padding: 0.2em 0.4em !important;
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 4px !important;
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 0 !important;
   font-size: 0.9em !important;
-  color: #e2e8f0 !important;
+  color: var(--text-white) !important;
+  font-family: var(--font-geist-mono), monospace !important;
+}
+
+
+/* Button underline hover effect */
+
+.btn-underline {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+}
+
+.btn-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.btn-underline:hover::after {
+  width: 100%;
+}
+
+.btn-underline:active {
+  transform: scale(.95);
 }

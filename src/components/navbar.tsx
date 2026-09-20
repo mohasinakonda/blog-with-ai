@@ -3,20 +3,26 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaHome, FaSearch } from "react-icons/fa";
 import { Post } from "@/lib/api";
 
 type Props = {
 	posts: Post[];
 };
 
+const navLinks = [
+	{ label: "WORK", href: "/projects" },
+	// { label: "EXPERIENCE", href: "#experience" },
+	{ label: "WRITING", href: "/blog" },
+	{ label: "ABOUT", href: "/resume" },
+];
+
 export function Navbar({ posts }: Props) {
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const [searchQuery, setSearchQuery] = useState("");
 	const [searchResults, setSearchResults] = useState<Post[]>([]);
-	// const [isDark, setIsDark] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
 	const divRef = useRef<HTMLDivElement | null>(null);
-	const buttonRef = useRef<HTMLButtonElement | null>(null);
+	const searchInputRef = useRef<HTMLInputElement | null>(null);
 
 	const handleSearch = (query: string) => {
 		setSearchQuery(query);
@@ -31,101 +37,102 @@ export function Navbar({ posts }: Props) {
 	};
 
 	useEffect(() => {
+		const handleScroll = () => setScrolled(window.scrollY > 20);
+		window.addEventListener("scroll", handleScroll, { passive: true });
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
+	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
-				buttonRef.current &&
-				!buttonRef.current.contains(event.target as Node) &&
 				divRef.current &&
 				!divRef.current.contains(event.target as Node)
 			) {
 				setIsSearchOpen(false);
+				setSearchQuery("");
+				setSearchResults([]);
 			}
 		};
-
 		document.addEventListener("click", handleClickOutside);
 		return () => document.removeEventListener("click", handleClickOutside);
 	}, []);
-	const links = ["Blog", "Resume", "Projects"];
+
+	useEffect(() => {
+		if (isSearchOpen && searchInputRef.current) {
+			searchInputRef.current.focus();
+		}
+	}, [isSearchOpen]);
+
 	return (
-		<motion.nav
-			initial={{ y: -100 }}
-			animate={{ y: 0 }}
-			className="backdrop-blur-sm bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/20 dark:border-gray-700/20 sticky top-0 z-50"
+		<motion.header
+			initial={{ y: -60, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+			className={`sticky top-0 z-50 border-b border-[#222222] transition-colors duration-300 ${scrolled ? "bg-[#080808]" : "bg-[#080808]/95"
+				}`}
 		>
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="flex items-center justify-between h-16">
-					<div className="flex items-center space-x-8">
-						<motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-							<Link
-								href="/"
-								className="text-xl font-bold text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-							>
-								<FaHome className="w-6 h-6" />
-							</Link>
-						</motion.div>
-						{links.map((item) => (
-							<motion.div
-								key={item}
-								whileHover={{ scale: 1.05 }}
-								whileTap={{ scale: 0.95 }}
-							>
-								<Link
-									href={`/${item.toLowerCase()}`}
-									className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-medium transition-colors"
-								>
-									{item}
-								</Link>
-							</motion.div>
-						))}
-					</div>
+			<div className="max-w-7xl mx-auto px-6 lg:px-12">
+				<div className="flex items-center justify-between h-14">
 
-					<div className="flex items-center space-x-6">
-						{/* <motion.button
-							whileHover={{ scale: 1.1 }}
-							whileTap={{ scale: 0.9 }}
-							onClick={() => setIsDark(!isDark)}
-							className="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+					{/* ── Left: Brand Mark ─────────────────────────────── */}
+					<Link href="/" className="flex items-center gap-3 group">
+						<span
+							className="font-mono-ui text-xs tracking-widest text-[#EDEDED] border border-[#333333] px-2 py-1 group-hover:border-[#EDEDED] transition-colors duration-150"
+							style={{ letterSpacing: "0.15em" }}
 						>
-							{isDark ? (
-								<FaSun className="w-5 h-5" />
-							) : (
-								<FaMoon className="w-5 h-5" />
-							)}
-						</motion.button> */}
+							HA
+						</span>
+						<span className="font-mono-ui text-xs tracking-widest text-[#8E8E8E] group-hover:text-[#EDEDED] transition-colors duration-150 hidden sm:block">
+							HAZRAT AKONDA
+						</span>
+					</Link>
 
-						<div className="relative">
-							<motion.button
-								whileHover={{ scale: 1.1 }}
-								whileTap={{ scale: 0.9 }}
-								onClick={() => setIsSearchOpen(true)}
-								className="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-								aria-label="Toggle search"
-								ref={buttonRef}
+					{/* ── Center: Nav Links (Desktop) ───────────────────── */}
+					<nav className="hidden md:flex items-center gap-8">
+						{navLinks.map((link) => (
+							<Link
+								key={link.label}
+								href={link.href}
+								className="font-mono-ui btn-underline text-[0.7rem] tracking-widest text-[#555555] hover:text-[#EDEDED] transition-colors duration-150"
 							>
-								<FaSearch className="w-5 h-5" />
-							</motion.button>
+								{link.label}
+							</Link>
+						))}
+					</nav>
+
+					{/* ── Right: CTA + Search ───────────────────────────── */}
+					<div className="flex items-center gap-4">
+						{/* Search */}
+						<div className="relative" ref={divRef}>
+							<button
+								onClick={() => setIsSearchOpen((v) => !v)}
+								aria-label="Search posts"
+								className="font-mono-ui text-[2rem] tracking-widest text-[#555555] hover:text-[#EDEDED] transition-colors shrink-0 duration-150 p-1"
+							>
+								{isSearchOpen ? "✕" : "⌕"}
+							</button>
 
 							<AnimatePresence>
 								{isSearchOpen && (
 									<motion.div
-										initial={{ opacity: 0, y: 10 }}
+										initial={{ opacity: 0, y: 8 }}
 										animate={{ opacity: 1, y: 0 }}
-										exit={{ opacity: 0, y: 10 }}
-										transition={{ duration: 0.2 }}
-										className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
-										ref={divRef}
+										exit={{ opacity: 0, y: 8 }}
+										transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+										className="absolute right-0 top-0 mt-2 w-72 bg-[#101010] border border-[#222222]"
 									>
-										<div className="p-3">
+										<div className="p-3 border-b border-[#222222]">
 											<input
+												ref={searchInputRef}
 												type="text"
 												value={searchQuery}
 												onChange={(e) => handleSearch(e.target.value)}
 												placeholder="Search posts..."
-												className="w-full px-4 py-2 text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+												className="w-full bg-transparent font-mono-ui text-xs text-[#EDEDED] placeholder-[#555555] outline-none tracking-wider"
 											/>
 										</div>
 										{searchResults.length > 0 && (
-											<div className="border-t border-gray-200 dark:border-gray-700 max-h-60 overflow-y-auto">
+											<div className="max-h-64 overflow-y-auto">
 												{searchResults.map((result) => (
 													<Link
 														key={result.slug}
@@ -135,25 +142,47 @@ export function Navbar({ posts }: Props) {
 															setIsSearchOpen(false);
 															setSearchResults([]);
 														}}
-														className="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+														className="block px-4 py-3 border-b border-[#1a1a1a] hover:bg-[#171717] transition-colors duration-150"
 													>
-														<div className="font-medium">{result.title}</div>
+														<div className="font-mono-ui text-[0.7rem] tracking-wider text-[#EDEDED]">
+															{result.title}
+														</div>
 														{result.tags && (
-															<div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-																{result.tags.join(" • ")}
+															<div className="font-mono-ui text-[0.65rem] text-[#555555] mt-1 tracking-widest">
+																{result.tags.join(" · ")}
 															</div>
 														)}
 													</Link>
 												))}
 											</div>
 										)}
+										{searchQuery && searchResults.length === 0 && (
+											<div className="px-4 py-3 font-mono-ui text-[0.7rem] text-[#555555] tracking-wider">
+												No results found.
+											</div>
+										)}
 									</motion.div>
 								)}
 							</AnimatePresence>
 						</div>
+
+						{/* CTA */}
+						<Link
+							href="mailto:hazrataliakonda@gmail.com"
+							className="hidden btn-underline sm:flex items-center gap-2 font-mono-ui text-[0.7rem] tracking-widest text-[#EDEDED] hover:text-[#8E8E8E] transition-colors duration-150 group"
+						>
+							<span className="relative flex h-2 w-2">
+								<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22C55E] opacity-75" />
+								<span className="relative inline-flex rounded-full h-2 w-2 bg-[#22C55E]" />
+							</span>
+							LET&apos;S TALK
+							<span className="inline-block group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-transform duration-150">
+								↗
+							</span>
+						</Link>
 					</div>
 				</div>
 			</div>
-		</motion.nav>
+		</motion.header>
 	);
 }
