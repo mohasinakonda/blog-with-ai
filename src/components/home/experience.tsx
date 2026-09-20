@@ -20,23 +20,7 @@ const metrics = [
 	},
 ];
 
-const timeline = [
-	{
-		period: "2024 — Present",
-		company: "Cronix LLC",
-		role: "Frontend Engineer",
-	},
-	{
-		period: "2022 — 2024",
-		company: "Technopers",
-		role: "Frontend Developer",
-	},
-	{
-		period: "2021 — 2022",
-		company: "Freelance",
-		role: "Frontend Developer",
-	},
-];
+
 
 export const Experience = () => {
 	return (

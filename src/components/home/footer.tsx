@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -36,17 +35,7 @@ const contactLinks = [
 ];
 
 export const Footer = () => {
-	const [copiedId, setCopiedId] = useState<string | null>(null);
 
-	const handleCopy = async (value: string, id: string) => {
-		try {
-			await navigator.clipboard.writeText(value);
-			setCopiedId(id);
-			setTimeout(() => setCopiedId(null), 1800);
-		} catch {
-			// fallback silently
-		}
-	};
 
 	return (
 		<footer id="contact" className="border-t border-[#222222]">
